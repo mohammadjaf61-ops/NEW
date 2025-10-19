@@ -3,8 +3,7 @@
     "beforeDevCommand": "",
     "beforeBuildCommand": "",
     "devPath": "../src",
-    "distDir": "../src",
-    "withGlobalTauri": false
+    "distDir": "../src"
   },
   "package": {
     "productName": "Esooli",
@@ -12,14 +11,11 @@
   },
   "tauri": {
     "allowlist": {
-      "all": true
+      "all": false
     },
     "bundle": {
-      "active": true,
-      "identifier": "com.esooli.app",
-      "icon": [
-        "icons/icon.png"
-      ]
+      "active": false,
+      "identifier": "com.esooli.app"
     },
     "windows": [
       {
