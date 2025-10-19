@@ -1,7 +1,11 @@
-name: Build
+name: build
+name: Buil
+  on:
+  on:
    on:
     push:
       branches:
+        - main
         - man
   jobs:
     build:
