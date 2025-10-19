@@ -1,12 +1,8 @@
-name: build
-name: Buil
-  on:
-  on:
+name: Build
    on:
     push:
       branches:
-        - main
-        - man
+         - man
   jobs:
     build:
       runs-on: windows-latest
