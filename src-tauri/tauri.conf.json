@@ -1,9 +1,26 @@
 {
-  "build": { "devPath": "../src", "distDir": "../src" },
-  "package": { "productName": "Esooli", "version": "1.0.0" },
+  "build": {
+    "devPath": "../src",
+    "distDir": "../src"
+  },
+  "package": {
+    "productName": "Esooli",
+    "version": "1.0.0"
+  },
   "tauri": {
-    "allowlist": { "all": false },
-    "bundle": { "identifier": "com.esooli.app" },
-    "windows": [ { "title": "Esooli", "width": 1200, "height": 800 } ]
+    "allowlist": {
+      "all": false
+    },
+    "bundle": {
+      "active": false,
+      "identifier": "com.esooli.app"
+    },
+    "windows": [
+      {
+        "title": "Esooli",
+        "width": 1200,
+        "height": 800
+      }
+    ]
   }
 }
