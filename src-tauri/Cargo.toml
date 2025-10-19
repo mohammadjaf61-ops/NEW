@@ -8,4 +8,4 @@ tauri = "1.5"
 serde = { version = "1.0", features = ["derive"] }
 
 [build-dependencies]
-# tauri-build removed for CI
+tauri-build = "1.5"
