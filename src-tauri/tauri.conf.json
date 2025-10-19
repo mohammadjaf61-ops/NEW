@@ -14,7 +14,8 @@
       "all": false
     },
     "bundle": {
-      "active": false
+      "active": false,
+      "identifier": "com.esooli.app"
     },
     "windows": [
       {
