@@ -3,7 +3,7 @@
   "package": { "productName": "Esooli", "version": "1.0.0" },
   "tauri": {
     "allowlist": { "all": false },
-    "bundle": { "identifier": "com.esooli.app", "icon": ["icons/icon.png"] },
+    "bundle": { "identifier": "com.esooli.app", "icon": ["icons/icon.ico"] },
     "windows": [ { "title": "Esooli", "width": 1200, "height": 800 } ]
   }
 }
