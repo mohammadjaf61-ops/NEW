@@ -1,3 +1,3 @@
 fn main() {
-    // تعطيل tauri-build تماماً
+    tauri_build::build()
 }
