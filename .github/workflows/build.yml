@@ -9,7 +9,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
-      - run: cd src-tauri && cargo build --release --bin esooli
+      - name: Build without bundling
+        run: |
+          cd src-tauri
+          $env:TAURI_SKIP_DEVTOOLS_CHECK="true"
+          cargo build --release
+        env:
+          TAURI_BUNDLE_SKIP: "true"
       - uses: actions/upload-artifact@v4
         with:
           name: EsooliApp
