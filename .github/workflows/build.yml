@@ -1,40 +1,19 @@
 name: Build
-
 on:
   push:
-    branches: [ main ]
-
+    branches:
+      - main
 jobs:
   build:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-            fetch-depth: 0
-
-      - name: Setup Rust (stable)
-        uses: dtolnay/rust-toolchain@stable
-      - name: Put Windows SDK rc.exe on PATH
-        shell: pwsh
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Build
         run: |
-          $sdkRoot = "C:/Program Files (x86)/Windows Kits/10/bin"
-          $rc = Get-ChildItem $sdkRoot -Recurse -Filter rc.exe -ErrorAction SilentlyContinue | Select-Object -First 1
-          if (-not $rc) {
-            Write-Error "rc.exe not found under $sdkRoot"
-            exit 1
-          }
-          $rcDir = $rc.DirectoryName
-          $env:PATH = "$rcDir;$env:PATH"
-          "$rcDir" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-          "Using rc.exe at: $($rc.FullName)" | Write-Host
-          Get-Command rc.exe | Format-List
-
-      - name: Build (release)
-        working-directory: src-tauri
-        run: cargo build --release
-
-      - name: Upload artifact (EXE)
-        uses: actions/upload-artifact@v4
+          cd src-tauri
+          cargo build --release --no-default-features
+      - uses: actions/upload-artifact@v4
         with:
           name: EsooliApp
           path: src-tauri/target/release/esooli.exe
