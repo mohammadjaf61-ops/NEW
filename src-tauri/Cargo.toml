@@ -3,10 +3,6 @@ name = "esooli"
 version = "1.0.0"
 edition = "2021"
 
-[lib]
-name = "esooli_lib"
-crate-type = ["staticlib", "cdylib", "rlib"]
-
 [[bin]]
 name = "esooli"
 path = "src/main.rs"
