@@ -29,12 +29,6 @@ jobs:
           "Using rc.exe at: $($rc.FullName)" | Write-Host
           Get-Command rc.exe | Format-List
 
-      - name: Ensure WebView2 runtime (safe no-op if present)
-        shell: pwsh
-        run: |
-          winget install --id Microsoft.EdgeWebView2Runtime `
-            --accept-package-agreements --accept-source-agreements --silent || echo "WebView2 OK"
-
       - name: Build (release)
         working-directory: src-tauri
         run: cargo build --release
