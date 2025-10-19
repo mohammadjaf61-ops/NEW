@@ -1,4 +1,5 @@
-name: Build
+cat > .github/workflows/build.yml << 'ENDOFFILE'
+  name: Build
   on:
     push:
       branches:
@@ -14,3 +15,4 @@ name: Build
           with:
             name: EsooliApp
             path: src-tauri/target/release/esooli.exe
+  ENDOFFILE
