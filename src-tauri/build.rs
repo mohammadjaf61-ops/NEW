@@ -1,3 +1,4 @@
 fn main() {
-    tauri_build::build()
+    // Skip tauri-build completely - no icons needed
+    println!("cargo:rustc-cfg=desktop");
 }
