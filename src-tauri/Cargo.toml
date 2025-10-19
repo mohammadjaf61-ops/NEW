@@ -1,0 +1,42 @@
+  [package]
+  name = "esooli"
+  version = "1.0.0"
+  edition = "2021"
+  [dependencies]
+  tauri = "1.5"
+  serde = "1.0"
+  [build-dependencies]
+  tauri-build = "1.5"
+  EOF
+
+cat > src-tauri/Cargo.toml << 'EOF'
+  [package]
+  name = "esooli"
+  version = "1.0.0"
+  edition = "2021"
+  [dependencies]
+  tauri = "1.5"
+  serde = "1.0"
+  [build-dependencies]
+  tauri-build = "1.5"
+  EOF
+cat > src-tauri/build.rs << 'EOF'
+  fn main() { tauri_build::build() }
+  EOF
+cat > src-tauri/src/main.rs << 'EOF'
+  #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
+  fn main() {
+      tauri::Builder::default().run(tauri::generate_context!()).expect("error");
+  }
+  EOF
+cat > src-tauri/tauri.conf.json << 'EOF'
+  {"build":{"devPath":"../src","distDir":"../src"},"package":{"productName":"Esooli","version":"1.0.0"},"tauri":{"allowlist":{"all":false},"bund
+  le":{"identifier":"com.esooli.app","icon":["icons/icon.png"]},"windows":[{"title":"Esooli","width":1200,"height":800}]}}
+  EOF
+cat > src/index.html << 'EOF'
+  <!DOCTYPE html>
+  <html><head><meta charset="UTF-8"><title>Esooli</title></head><body style="font-family:sans-serif;background:linear-gradient(135deg,#667eea,#7
+  64ba2);color:white;height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column"><h1 style="font-size:72px">🚀
+  Esooli</h1><p>تطبيق Tauri</p></body></html>
+  EOF
+ echo "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" | base64 -d > src-tauri/icons/icon.png

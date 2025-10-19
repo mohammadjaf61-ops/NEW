@@ -1,0 +1,2 @@
+ {"build":{"devPath":"../src","distDir":"../src"},"package":{"productName":"Esooli","version":"1.0.0"},"tauri":{"allowlist":{"all":false},"bund
+  le":{"identifier":"com.esooli.app","icon":["icons/icon.png"]},"windows":[{"title":"Esooli","width":1200,"height":800}]}}
