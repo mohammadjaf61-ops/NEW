@@ -1,30 +1,16 @@
-name: build
-name: Buil
-  on:
-  on:
 name: Build
-on:
-push:
-branches:
-- main
-- man
-jobs:
-build:
-     runs-on: windows-latest
-     steps:
-      - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@stable
-      - run: cd src-tauri && cargo build --release
-      - uses: actions/upload-artifact@v4
-        with:
-         name: EsooliApp
-         path: src-tauri/target/release/esooli.exe
+  on:
+    push:
+      branches:
+        - main
+  jobs:
+    build:
       runs-on: windows-latest
       steps:
-       - uses: actions/checkout@v4
-       - uses: dtolnay/rust-toolchain@stable
-       - run: cd src-tauri && cargo build --release
-       - uses: actions/upload-artifact@v4
-         with:
-          name: EsooliApp
-          path: src-tauri/target/release/esooli.exe
+        - uses: actions/checkout@v4
+        - uses: dtolnay/rust-toolchain@stable
+        - run: cd src-tauri && cargo build --release
+        - uses: actions/upload-artifact@v4
+          with:
+            name: EsooliApp
+            path: src-tauri/target/release/esooli.exe
