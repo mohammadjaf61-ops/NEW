@@ -1,32 +1,30 @@
-<!DOCTYPE html>
-<html lang="ar"><head>
-  <meta charset="UTF-8" />
-  <title>Esooli</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <style>
-    body{font-family:sans-serif;background:linear-gradient(135deg,#667eea,#764ba2);
-    color:#fff;height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column}
-    h1{font-size:64px;margin:0} p{opacity:.9}
-  </style>
-</head><body>
-  <h1>🚀 Esooli</h1>
-  <p>Tauri minimal UI</p>
-</body></html>
-EOFmkdir -p src
+cd /workspaces/NEW
 cat > src/index.html <<'EOF'
 <!DOCTYPE html>
-<html lang="ar"><head>
+<html lang="ar">
+<head>
   <meta charset="UTF-8" />
   <title>Esooli</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <style>
-    body{font-family:sans-serif;background:linear-gradient(135deg,#667eea,#764ba2);
-    color:#fff;height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column}
-    h1{font-size:64px;margin:0} p{opacity:.9}
+    body {
+      font-family: sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin: 0;
+    }
+    h1 { font-size: 64px; margin: 0; }
+    p { opacity: 0.9; }
   </style>
-</head><body>
+</head>
+<body>
   <h1>🚀 Esooli</h1>
   <p>Tauri minimal UI</p>
-</body></html>
+</body>
+</html>
+EOF
