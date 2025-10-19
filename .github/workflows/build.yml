@@ -9,10 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
-      - name: Build
-        run: |
-          cd src-tauri
-          cargo build --release --no-default-features
+      - run: cd src-tauri && cargo build --release --bin esooli
       - uses: actions/upload-artifact@v4
         with:
           name: EsooliApp

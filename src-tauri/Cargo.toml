@@ -3,9 +3,18 @@ name = "esooli"
 version = "1.0.0"
 edition = "2021"
 
+[lib]
+name = "esooli_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[[bin]]
+name = "esooli"
+path = "src/main.rs"
+
 [dependencies]
-tauri = { version = "1.5", default-features = false }
-serde = { version = "1.0", features = ["derive"] }
+serde = "1.0"
+serde_json = "1.0"
+tauri = { version = "1.5", features = ["api-all"] }
 
 [build-dependencies]
-tauri-build = { version = "1.5", default-features = false }
+tauri-build = { version = "1.5", features = [] }
