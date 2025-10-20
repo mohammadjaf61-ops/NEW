@@ -9,13 +9,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
-      - name: Build without bundling
+      
+      - name: Install Tauri CLI and generate proper icons
+        run: |
+          cargo install tauri-cli --version 1.5.14
+          cd src-tauri
+          
+          # Create a simple 256x256 PNG icon
+          Add-Type -AssemblyName System.Drawing
+          $bmp = New-Object System.Drawing.Bitmap 256,256
+          $graphics = [System.Drawing.Graphics]::FromImage($bmp)
+          $graphics.Clear([System.Drawing.Color]::FromArgb(0, 120, 212))
+          $graphics.FillEllipse([System.Drawing.Brushes]::White, 64, 64, 128, 128)
+          $bmp.Save("$PWD/app-icon.png", [System.Drawing.Imaging.ImageFormat]::Png)
+          
+          # Use Tauri CLI to generate proper icons
+          cargo tauri icon app-icon.png
+          
+      - name: Build
         run: |
           cd src-tauri
-          $env:TAURI_SKIP_DEVTOOLS_CHECK="true"
           cargo build --release
-        env:
-          TAURI_BUNDLE_SKIP: "true"
+          
       - uses: actions/upload-artifact@v4
         with:
           name: EsooliApp
