@@ -9,27 +9,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
 
-      - name: Install Tauri CLI and generate icons
-        run: |
-          npm install --global @tauri-apps/cli@1.5
-          cd src-tauri
-
-          # Generate base icon
-          Add-Type -AssemblyName System.Drawing
-          $bmp = New-Object System.Drawing.Bitmap 1024,1024
-          $graphics = [System.Drawing.Graphics]::FromImage($bmp)
-          $graphics.Clear([System.Drawing.Color]::FromArgb(0, 120, 212))
-          $graphics.FillEllipse([System.Drawing.Brushes]::White, 256, 256, 512, 512)
-          $bmp.Save("app-icon.png", [System.Drawing.Imaging.ImageFormat]::Png)
-
-          # Use Tauri CLI to generate all icons
-          npm tauri icon app-icon.png
-
-      - name: Build
+      - name: Build without icons
+        env:
+          TAURI_SKIP_EMBEDDED_RESOURCES: "1"
         run: |
           cd src-tauri
           cargo build --release
