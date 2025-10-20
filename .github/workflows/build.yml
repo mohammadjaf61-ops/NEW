@@ -9,18 +9,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
-      
-      - name: Setup icons directory
-        run: |
-          cd src-tauri
-          mkdir -p icons
-          echo "Icon placeholder" > icons/.gitkeep
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-      - name: Build
-        run: |
-          cd src-tauri
-          cargo build --release
-          
+      - name: Build Tauri App
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: --no-bundle
+
       - uses: actions/upload-artifact@v4
         with:
           name: EsooliApp
