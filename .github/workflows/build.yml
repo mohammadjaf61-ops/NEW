@@ -13,6 +13,9 @@ jobs:
         with:
           node-version: 20
 
+      - name: Install dependencies
+        run: npm install
+
       - name: Build Tauri App
         uses: tauri-apps/tauri-action@v0
         env:

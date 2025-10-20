@@ -1,0 +1,11 @@
+{
+  "name": "esooli",
+  "version": "1.0.0",
+  "description": "Esooli Tauri Application",
+  "scripts": {
+    "tauri": "tauri"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^1.5.0"
+  }
+}
